@@ -1,0 +1,43 @@
+<!doctype html>
+<html style="width: 100%; height: 100%;">
+<head>
+<title>	BPM Calculator </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/buttons.css" />
+<script src="js/jquery.min.js"></script>
+<script src="js/buttons.js"></script>
+<style>
+* {
+	margin: 0;
+}
+</style>
+<script>
+$( document ).ready(function() {
+	$("#test").click(function(){
+	        var history = [],
+	            last = +new Date();
+	
+	        return function(e) { 
+	            history.push(e.timeStamp - last);
+	            
+	            $("h1").html(5*Math.round(((60000/(history[history.length - 1]))/5)) + " bpm");
+	            last = e.timeStamp;
+	        };
+	    }());
+});
+</script>
+</head>
+<body style="background-color: rgb(0, 158, 255);width:100%; height: 100%;">
+	<div style="display: table; width: 100vw; height: 100vh;">
+		<div style="display: table-cell; vertical-align: middle; text-align: center;">
+			<a href="#" class="button button-3d-caution button-circle" id="test" style="width: 30vh; height: 30vh; min-width:100px; min-height: 100px; max-width: 300px; max-height:300px;"></a>
+			<div style="line-height: 5vh;">&nbsp;</div>
+			<span style="font-family: arial, sans-serif; color: white;background-color: rgb(46, 186, 46); border: 2px solid rgb(0, 165, 77); border-radius: 10px;display: table;margin: 0 auto;padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px;"><h1>tap button to the beat</h1></span>
+
+		</div>
+	</div>
+	<div id="counter" style="display: none;"></div>
+	<div id="total" style="display: none;"></div>
+</body>
+		
+</html>
